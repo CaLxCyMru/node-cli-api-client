@@ -1,5 +1,7 @@
 # Zapi CLI
-This is a small project in which I made an effort to write cleaner and better code. It uses things i wasnt familiar with using yet, such as the events module as well as organizing my code into more separate files. This is the first project i made a lib/ for.
+This is a small project is an exercise given to me by my professor. I decided to take it a few steps further and use it as a playground in which I made an effort to write cleaner and better code.
+
+It uses things i wasnt familiar with using yet, such as the events module as well as organizing my code into more separate files. This is the first project i made a lib/ for.
 This project is a CLI for an API, `api.js` present in the project.
 
 ### Usage
