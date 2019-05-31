@@ -1,5 +1,5 @@
 const req = require('../lib/requests');
-const Slider = require('../slider.js');
+const Slider = require('../lib/slider.js');
 const ora = require('ora');
 
 module.exports = {
