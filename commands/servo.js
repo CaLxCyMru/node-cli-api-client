@@ -1,4 +1,4 @@
-const req = require('../requests');
+const req = require('../lib/requests');
 const Slider = require('../slider.js');
 const ora = require('ora');
 
