@@ -14,7 +14,7 @@ app.get('/api/temp', (req, res) =>{
     res.send('temp: 21°C');
 })
 
-app.get('/', (req, res) => {
+app.get('/gui', (req, res) => {
     res.send(`
     Io sono un <span style="color:${data.rgb};">LED</span>!<br>
     <input type="color" value="${data.rgb}">
@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
     <script>
     document.getElementById('btn').addEventListener('click', () =>{
         let data = {"rgb":document.getElementsByTagName('input')[0].value};
-        fetch("/api/rbg", {
+        fetch("/api/rgb", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -55,7 +55,11 @@ app.get('/', (req, res) => {
     </script>`);
 })
 
-app.post('/api/rbg', (req, res, next) => {
+app.get('/', (req, res) => {
+    res.json(data);
+})
+
+app.post('/api/rgb', (req, res, next) => {
     data.rgb = req.body.rgb;
     console.log(`Color changed to: ${req.body.rgb}`);
     res.json(req.body);

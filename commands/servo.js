@@ -20,7 +20,7 @@ module.exports = {
                     req.post('http://zbestsolutions.it:5000/api/servo', { "servo": value })
                         .then(function (parsedBody) {
                             spinner.stop();
-                            console.log(`Value Changed to ${value}`);
+                            console.log(`Value Changed to ${parsedBody.servo}`);
                             process.exit();
                         }).catch(err => {
                             spinner.fail();
