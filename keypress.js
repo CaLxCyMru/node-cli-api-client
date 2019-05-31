@@ -1,26 +1,10 @@
-var stdin = process.stdin;
-stdin.setRawMode(true);
-stdin.resume();
-stdin.setEncoding('utf8');
+// This is a helped scipt for getting the process.stdin key codes for use in the cli.
 
-/* stdin.on('data', function (key) {
-    if (key == '\u001B\u005B\u0041') {
-        process.stdout.write('up');
-    }
-    if (key == '\u001B\u005B\u0043') {
-        process.stdout.write('right');
-    }
-    if (key == '\u001B\u005B\u0042') {
-        process.stdout.write('down');
-    }
-    if (key == '\u001B\u005B\u0044') {
-        process.stdout.write('left');
-    }
+process.stdin.setRawMode(true);
+process.stdin.resume();
+process.stdin.setEncoding('utf8');
 
-    if (key == '\u0003') { process.exit(); }    // ctrl-c
-}); */
-
-stdin.on('data', function (key) {
+process.stdin.on('data', function (key) {
     console.log(toUnicode(key)); //Gives you the unicode of the pressed key
     if (key == '\u0003') { process.exit(); }    // ctrl-c
 });
