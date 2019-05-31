@@ -62,9 +62,18 @@ app.post('/api/rbg', (req, res, next) => {
 })
 
 app.post('/api/servo', (req, res, next) => {
+    console.log(JSON.stringify(req.body))
     data.servo = req.body.servo;
     console.log(`Servo rotation changed to: ${req.body.servo}`);
     res.json(req.body);
+})
+
+app.get('/api/servo', (req, res) => {
+    res.json(data.servo);
+})
+
+app.get('/api/rgb', (req, res) => {
+    res.json(data.rgb);
 })
 
 app.listen(port, () => {
