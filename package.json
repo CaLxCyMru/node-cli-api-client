@@ -28,6 +28,6 @@
   },
   "homepage": "https://github.com/metruzanca/node-cli-api-client#readme",
   "bin": {
-    "zapi": "./servo.js"
+    "zapi": "./zapi.js"
   }
 }
