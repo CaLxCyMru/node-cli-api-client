@@ -6,6 +6,7 @@ module.exports = {
     name: 'servo',
     description: 'Renders a slider for chaning ',
     usage: '[command name]',
+    argsUsage: [`-l : Activates live change mode.`],
     execute(args) {
         const spinner = ora('Getting Servo current value').start();
         req.get('http://zbestsolutions.it:5000/api/servo')
@@ -14,11 +15,18 @@ module.exports = {
                 const slider = new Slider(response, 360);
 
                 slider.on('value', (value) => {
+                    spinner.text = 'Chaning value...';
+                    spinner.start();
                     req.post('http://zbestsolutions.it:5000/api/servo', { "servo": value })
                         .then(function (parsedBody) {
+                            spinner.stop();
                             console.log(`Value Changed to ${value}`);
                             process.exit();
-                        });
+                        }).catch(err => {
+                            spinner.fail();
+                            console.log(err.message);
+                            process.exit();
+                        })
                 })
                 if (args.l) {
                     slider.on('changed', (value) => {
@@ -26,15 +34,17 @@ module.exports = {
                             .then(function (parsedBody) {
                                 // Post went thru
                             }).catch(err => {
+                                spinner.fail();
                                 console.log(err.message);
                                 process.exit();
                             })
                     });
                 }
             })
+            /* Fairly certain this final catch isn't needed.
             .catch(function (err) {
-                spinner.fail()
+                spinner.fail();
                 console.log(err.message);
-            });
+            }); */
     },
 };
